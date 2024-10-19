@@ -14,6 +14,10 @@ average_return = st.number_input('Average Return (e.g., 0.08 for 8%)', min_value
 std_dev = st.number_input('Standard Deviation (Volatility)', min_value=0.0, max_value=1.0, value=0.15, step=0.01)
 annual_contribution = st.number_input('Annual Contribution ($)', min_value=0, value=5000, step=500)
 discount_rate = st.number_input('Discount Rate for NPV (e.g., 0.05 for 5%)', min_value=0.0, max_value=1.0, value=0.05, step=0.01)
+random_seed = st.number_input('Random Seed (for reproducibility)', min_value=0, value=42, step=1)
+
+# Set the random seed for reproducibility
+np.random.seed(random_seed)
 
 # Run Monte Carlo Simulation
 run_simulation = st.button("Run Simulation")
@@ -89,3 +93,4 @@ if run_simulation:
     st.write(f"**Mean Net Present Value**: ${mean_npv:,.2f}")
     st.write(f"**25th Percentile Net Present Value**: ${npv_percentile_25:,.2f}")
     st.write(f"**75th Percentile Net Present Value**: ${npv_percentile_75:,.2f}")
+
